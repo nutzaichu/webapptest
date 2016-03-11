@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="knowledgeSearch.css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>Knowledge Graph Search</title>
+</head>
+<body>
+  <form align=middle>
+      <input type="text" name="keyword" id="search-field" placeholder="what do you want to know?">
+      <input type="submit" value="search" id="search-button" hidden="true">
+  </form>
+  <div id = allResult>
+  </div>
+
+
+  <script>
+  var totalImg;
+
+  function setSize(){
+    for(i = 0; i < totalImg; i++){
+      var width = $('#photo'+i).width();
+      var height = $('#photo'+i).height();
+      if(width >= height){
+        height = height*(200/width);
+        width = 200;
+      }
+      else{
+        width = width*(200/height);
+        height = 200;
+      }
+      $('#photo'+i).css({'width': width+"px", 'height' : height+"px"});
+    }
+  }
+
+  function showResult(){
+    $("#allResult").css('visibility','visible');
+  }
+
+  function hideResult(){
+    $("#allResult").css('visibility','hidden');
+  }
+
+  $("#search-button").click(function loadResult(e){
+    e.preventDefault()
+    totalImg = 0;
+    hideResult();
+    $("#allResult").empty();
+    var keyword = document.getElementsByName("keyword")[0].value;
+    var service_url = 'https://kgsearch.googleapis.com/v1/entities:search';
+    var params = {
+      'query': keyword,
+      'limit': 20,
+      'indent': true,
+      'key' : 'AIzaSyCWo6eN2D1BzsqKWYigmqGg19Arx_-e3kY',
+    };
+    $.getJSON(service_url + '?callback=?', params, function(response) {
+      console.log(response);
+      $.each(response.itemListElement, function(i, element) {
+        var index = i;
+        var title = element['result']['name'];
+        var description = element['result']['description'];
+        var url;
+        if(element['result']['detailedDescription'] !== undefined){
+            url = element['result']['detailedDescription']['url'];
+        }
+        else{
+            url = "";
+        }
+        var imageUrl;
+
+        if(element['result']['image'] !== undefined){
+          imageUrl = element['result']['image']['contentUrl'];
+        }
+        else{
+          imageUrl = 'http://vignette2.wikia.nocookie.net/horrormovies/images/e/e3/No_Image.png/revision/latest?cb=20140329231046';
+        }
+        totalImg++;
+        $("#allResult").append("<div class=card id=card" + index + "><h2>" + title + "<br></div/>");
+        $("#card"+index).append("<img src=" + imageUrl + " id=photo" +  index+ ">");
+        $("#card"+index).append(description+"<br>");
+        $("#card"+index).append("<a href="+ url + ">" + "Learn more</a>");
+      });
+    });
+  });
+  $( document ).ajaxComplete(function() {
+   setTimeout(function(){setSize(); showResult()},1000);
+  });
+
+  </script>
+</body>
+
+</html>

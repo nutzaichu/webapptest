@@ -1,0 +1,62 @@
+body{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+#search-field{
+ left : 50%;
+ width: 300px;
+ height: 50px;
+ margin: 20px;
+ font-size: 16pt;
+ color: #63717f;
+ padding-left: 15px;
+ border-color: #525252;
+ background-color: #FAFAFA;
+ -webkit-border-radius: 15px;
+ -moz-border-radius: 15px;
+ border-radius: 15px;
+ border: none;
+ outline : none;
+}
+
+.card{
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+
+
+img{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    vertical-align: middle;
+}
+
+
+a {
+    border: none;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: #008CBA;
+    color: white;
+}
+
+a:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid #008CBA;
+}
