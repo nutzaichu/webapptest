@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How to create parallax clouds animation!</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <h1>How to create parallax clouds animation!</h1>
+  <div>
+    <p>1. show an image of a cloud and create class of background
+    <div class = "code">
+      .cloud{<br>
+      width: 320px;<br>
+      height: 213px;<br>
+      position: absolute;<br>
+      background-image: url("cloud.png")<br>
+    }<br><br>
+      .bg{<br>
+        background: #c9dbe9;<br>
+        background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%);<br>
+        height: 300px;<br>
+      }<br>
+    </div>
+    <div class="bg">
+      <div class ="cloud">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p>2. create class of moving a cloud</p>
+    <div class ="code">
+      .x1{<br>
+        -webkit-animation: moveclouds 15s linear infinite;<br>
+        background-size: 100%;<br>
+      }<br><br>
+      @-webkit-keyframes moveclouds {<br>
+      	0% {margin-left: 1000px;}<br>
+      	100% {margin-left: -1000px;}<br>
+      }<br>
+
+    </div>
+  </div>
+  <div>
+    <div class="bg">
+      <div class="cloud x1">
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p>3. create class of transform scale/opacity and moving another cloud
+    <div class="code">
+      .x2{<br>
+        top: 30px;<br>
+        left: 400px;<br>
+        transform: scale(0.6);<br>
+        opacity: 0.6; <br>
+        -webkit-animation: moveclouds 18s linear infinite;<br>
+        background-size: 100%;<br>
+      }
+    </div>
+  </div>
+  <div>
+    <div class="bg">
+      <div class="cloud x1">
+      </div>
+      <div class="cloud x2">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+</html>

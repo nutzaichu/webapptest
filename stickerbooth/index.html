@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stickerbooth.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+    <script src="camera.js"></script>
+    <script src="stickerbooth.js"></script>
+    <title>Sticker Booth</title>
+
+</head>
+<body>
+<div id="wrapper">
+    <div id="framing">
+        <canvas id="photo" width="800" height="600"></canvas>
+        <div id="camera"></div>
+        <div id="countdown"></div>
+        <div id="overlay"></div>
+    </div>
+    <div id="camera-control">
+        <button id="capture-button">S</button>
+    </div>
+    <div id="toolbar">
+        <ul id="sticker-list">
+            <li><img src="sticker/glasses_01.png" class="sticker"/></li>
+            <li><img src="sticker/dognose.png" class="sticker"/></li>
+            <li><img src="sticker/tongue.png" class="sticker"/></li>
+            <li><img src="sticker/eye_01.png" class="sticker"/></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
